@@ -1,20 +1,42 @@
-import { getFruits } from '../apis/fruits'
+import { getAllPhotosAPI } from '../apis/photosAPI'
+import { getAlbumAPI } from '../apis/albumsAPI'
 
-export const SET_FRUITS = 'SET_FRUITS'
+export const SET_PHOTOS = 'SET_PHOTOS'
+export const SET_ALBUM_PHOTOS = 'SET_ALBUM_PHOTOS'
 
-export function setFruits (fruits) {
+export function setPhotos (photos) {
   return {
-    type: SET_FRUITS,
-    fruits
+    type: SET_PHOTOS,
+    photos
   }
 }
 
-export function fetchFruits () {
+export function fetchPhotos () {
   return dispatch => {
-    return getFruits()
-      .then(fruits => {
-        dispatch(setFruits(fruits))
-        return null
-      })
+    return getAllPhotosAPI()
+    .then(photos => {
+      dispatch(setPhotos(photos))
+      return photos
+    })
+  }
+}
+
+
+export function setAlbumPhotos (photos) {
+  return {
+    type: SET_ALBUM_PHOTOS,
+    photos
+  }
+}
+
+export function fetchAlbumPhotos (album) {
+  return dispatch => {
+    return getAlbumAPI(album)
+    .then(photos => {
+      return dispatch(setAlbumPhotos(photos))
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 }

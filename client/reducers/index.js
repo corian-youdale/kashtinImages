@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 
-import fruits from './fruits'
+import photos from './photos'
+import albums from './albums'
 
 export default combineReducers({
-  fruits
+    photos,
+    albums,
 })
