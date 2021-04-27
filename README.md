@@ -1,6 +1,6 @@
 # Kashtin Images
 
-A Small private image hosting site.
+A WIP private image hosting site.
 
 ### Database Diagram:
 
